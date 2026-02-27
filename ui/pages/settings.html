@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapLoad - Settings</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/settings.css">
+    <link rel="stylesheet" href="../styles/modals.css">
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="back-button" id="back-btn" title="Back">
+                        <i data-lucide="arrow-left"></i>
+                    </button>
+                    <div class="header-text">
+                        <h1>Settings</h1>
+                        <p>Configure your SnapLoad experience</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Settings -->
+        <div class="settings-main">
+            <div class="settings-sidebar">
+                <nav class="settings-nav">
+                    <a href="#import-memories" class="settings-nav-item" data-section="import-memories">
+                        <i data-lucide="file-json"></i>
+                        <span data-i18n="importMemories">Import Memories</span>
+                    </a>
+                    <a href="#storage" class="settings-nav-item" data-section="storage">
+                        <i data-lucide="folder"></i>
+                        <span data-i18n="storageLocation">Storage Location</span>
+                    </a>
+                    <a href="#language" class="settings-nav-item" data-section="language">
+                        <i data-lucide="globe"></i>
+                        <span data-i18n="language">Language</span>
+                    </a>
+                    <a href="#about" class="settings-nav-item active" data-section="about">
+                        <i data-lucide="info"></i>
+                        <span data-i18n="about">About</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="settings-content">
+                <!-- Import Memories Section -->
+                <div class="settings-section" id="import-memories-section">
+                    <div class="section-header">
+                        <h2>
+                            <i data-lucide="file-json"></i>
+                            <span data-i18n="importNewMemoriesFile">Import New Memories File</span>
+                        </h2>
+                        <p data-i18n="replaceMemoriesFile">Replace your current memories_history.json file with a new file or ZIP. This action will reset the download state.</p>
+                    </div>
+
+                    <div class="warning-box">
+                        <i data-lucide="alert-triangle"></i>
+                        <div>
+                            <strong data-i18n="warning">Warning!</strong>
+                            <p data-i18n="importingWillReset">Importing a new Memories file will reset:</p>
+                            <ul>
+                                <li data-i18n="downloadState">The state of all downloads</li>
+                                <li data-i18n="fileStatus">File status (success/error)</li>
+                                <li data-i18n="progressInfo">Progress information</li>
+                            </ul>
+                            <p data-i18n="continueAware">Continue only if you are sure you want to import a new file.</p>
+                        </div>
+                    </div>
+
+                    <div class="import-button-group">
+                        <button id="import-memories-btn" class="btn btn-primary">
+                            <i data-lucide="upload"></i>
+                            <span data-i18n="importNewFile">Import New File</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Storage Location Section -->
+                <div class="settings-section" id="storage-section">
+                    <div class="section-header">
+                        <h2>
+                            <i data-lucide="folder"></i>
+                            <span data-i18n="storageLocation">Storage Location</span>
+                        </h2>
+                        <p data-i18n="storageLocationDesc">Select the folder where you want to save your downloaded files.</p>
+                    </div>
+
+                    <div class="storage-info">
+                        <div class="storage-path-display">
+                            <i data-lucide="folder-open"></i>
+                            <div>
+                                <label data-i18n="currentPath">Current path:</label>
+                                <p id="current-storage-path" style="color: var(--accent); word-break: break-all; font-weight: 500;"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="change-storage-btn" class="btn btn-primary">
+                        <i data-lucide="folder-plus"></i>
+                        <span data-i18n="changeFolder">Change Folder</span>
+                    </button>
+                </div>
+
+                <!-- Language Section -->
+                <div class="settings-section" id="language-section">
+                    <div class="section-header">
+                        <h2>
+                            <i data-lucide="globe"></i>
+                            <span data-i18n="language">Language</span>
+                        </h2>
+                        <p data-i18n="languageDesc">Choose the display language for the application.</p>
+                    </div>
+
+                    <div class="language-options">
+                        <label class="radio-option">
+                            <input type="radio" name="language" value="FR" id="lang-fr">
+                            <span>French 🇫🇷</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="language" value="EN" id="lang-en">
+                            <span>English 🇬🇧</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="settings-section active" id="about-section">
+                    <div class="section-header">
+                        <h2>
+                            <i data-lucide="info"></i>
+                            <span data-i18n="about">About</span>
+                        </h2>
+                    </div>
+
+                    <div class="about-content">
+                        <div class="about-card">
+                            <h3>SnapLoad</h3>
+                            <p data-i18n="appDescription">Download your Snapchat Memories</p>
+                            <div class="version-info">
+                                <span data-i18n="version">Version:</span> <strong>1.0.0</strong>
+                            </div>
+                        </div>
+
+                        <div class="about-card">
+                            <h3 data-i18n="features">Features</h3>
+                            <ul>
+                                <li data-i18n="featureDownload">📥 Fast and secure download</li>
+                                <li data-i18n="featureFusion">🔗 Automatic overlay fusion</li>
+                                <li data-i18n="featureMetadata">🏷️ Metadata preservation</li>
+                            </ul>
+                        </div>
+
+                        <div class="about-card">
+                            <h3 data-i18n="links">Links</h3>
+                            <div class="links-group">
+                                <a href="https://github.com" target="_blank" class="link-btn">
+                                    <i data-lucide="github"></i>
+                                    <span>GitHub</span>
+                                </a>
+                                <button id="reset-all-btn" class="link-btn warning">
+                                    <i data-lucide="rotate-ccw"></i>
+                                    <span data-i18n="resetAll">Reset All</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Input (Hidden) -->
+    <input type="file" id="memories-file-input" accept=".json,.zip" style="display: none;">
+
+    <!-- Import Status Container -->
+    <div id="import-status-container" style="display: none;"></div>
+
+    <!-- Include All Modals -->
+    <div id="modals-container"></div>
+
+    <script type="module" src="../scripts/settings.js"></script>
+</body>
+</html>

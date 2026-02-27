@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapLoad - Snapchat Memories Downloader</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/modals.css">
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="header-left">
+                    <img src="../../assets/logo.png" alt="SnapLoad Logo" class="logo">
+                    <div class="header-text">
+                        <div class="title-container">
+                            <h1 id="app-title">SnapLoad</h1>
+                            <span class="beta-badge">BETA</span>
+                        </div>
+                        <p id="app-description">Download Snapchat Memories</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <!-- TODO : replace link -->
+                    <a href="https://github.com" target="_blank" class="header-button github-button">
+                        <i data-lucide="github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <button class="header-button feedback-button" id="feedback-button">
+                        <i data-lucide="message-circle"></i>
+                        <span>Feedback</span>
+                    </button>
+                    <button class="header-button settings-button" id="settings-button">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </button>
+                    <div class="language-selector">
+                        <select id="language-select" class="language-dropdown">
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="download">
+                <i data-lucide="download"></i>
+                <span data-i18n="download">Download</span>
+            </button>
+            <button class="tab-button" data-tab="fusion">
+                <i data-lucide="git-merge"></i>
+                <span data-i18n="fusion">Merge ZIP</span>
+            </button>
+        </div>
+
+        <!-- Download Tab -->
+        <div id="download-tab" class="tab-content active">
+            <div class="card">
+                <h2 class="card-title">
+                    <i data-lucide="activity"></i>
+                    <span data-i18n="downloadStatus">Download Status</span>
+                </h2>
+                
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label" data-i18n="status">Status</span>
+                        <span class="status-badge" id="status-text" data-i18n="ready">Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label" data-i18n="progress">Progress</span>
+                        <span class="status-value" id="progress-text">0 / 0 <span data-i18n="files">files</span></span>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span class="progress-label" data-i18n="advancement">Advancement</span>
+                        <span class="progress-percent" id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div id="current-file" class="current-file"></div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <i data-lucide="bar-chart-2" class="metric-icon"></i>
+                        <span id="download-speed" class="metric-value">0.00 files/s</span>
+                    </div>
+                    <div class="metric">
+                        <i data-lucide="zap" class="metric-icon"></i>
+                        <span id="network-speed" class="metric-value">0.00 MB/s</span>
+                    </div>
+                    <div class="metric">
+                        <i data-lucide="clock" class="metric-icon"></i>
+                        <span id="time-remaining" class="metric-value">--</span>
+                    </div>
+                </div>
+
+                <div id="stopping-spinner" class="spinner-container">
+                    <div class="spinner"></div>
+                    <span class="spinner-text" data-i18n="stopping">Stopping...</span>
+                </div>
+
+                <div class="button-group">
+                    <button id="start-btn" class="btn btn-primary">
+                        <i data-lucide="play"></i>
+                        <span data-i18n="startDownload">Start Download</span>
+                    </button>
+                    <button id="stop-btn" class="btn btn-danger" disabled>
+                        <i data-lucide="square"></i>
+                        <span data-i18n="stop">Stop</span>
+                    </button>
+                    <button id="open-folder-btn" class="btn btn-secondary">
+                        <i data-lucide="folder-open"></i>
+                        <span data-i18n="openOutputFolder">Open Output Folder</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="card">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="successfulDownloads">Successful</div>
+                        <div class="stat-value success" id="stat-success">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon error">
+                            <i data-lucide="x"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="failedDownloads">Failed</div>
+                        <div class="stat-value error" id="stat-failed">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <i data-lucide="hash"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="totalFiles">Total</div>
+                        <div class="stat-value" id="stat-total">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fusion Tab -->
+        <div id="fusion-tab" class="tab-content">
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h2 class="card-title">
+                        <i data-lucide="git-merge"></i>
+                        <span data-i18n="fusionMediaTitle">Merge Media ZIP</span>
+                    </h2>
+                    <button id="info-btn" class="btn btn-secondary" style="padding: 0.625rem 1.25rem;">
+                        <i data-lucide="info"></i>
+                        <span data-i18n="help">Help</span>
+                    </button>
+                </div>
+
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-label" data-i18n="status">Status</span>
+                        <span class="status-badge" id="fusion-status-text" data-i18n="ready">Ready</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label" data-i18n="availableZIPs">Available ZIPs</span>
+                        <span class="status-value" id="fusion-zips-count">0</span>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-header">
+                        <span class="progress-label" data-i18n="advancement">Advancement</span>
+                        <span class="progress-percent" id="fusion-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="fusion-progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div id="fusion-current-file" class="current-file"></div>
+
+                <div class="button-group">
+                    <button id="fusion-start-btn" class="btn btn-primary">
+                        <i data-lucide="play"></i>
+                        <span data-i18n="startFusion">Start Fusion</span>
+                    </button>
+                    <button id="fusion-stop-btn" class="btn btn-danger" style="display: none;">
+                        <i data-lucide="square"></i>
+                        <span data-i18n="stop">Stop</span>
+                    </button>
+                    <button id="fusion-refresh-btn" class="btn btn-secondary">
+                        <i data-lucide="refresh-cw"></i>
+                        <span data-i18n="refresh">Refresh</span>
+                    </button>
+                </div>
+
+                <div class="stats-grid" style="margin-top: 2rem;">
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <i data-lucide="hash"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="totalFiles">Total</div>
+                        <div class="stat-value" id="fusion-stat-total">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon success">
+                            <i data-lucide="check"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="successfulDownloads">Successful</div>
+                        <div class="stat-value success" id="fusion-stat-success">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon error">
+                            <i data-lucide="x"></i>
+                        </div>
+                        <div class="stat-label" data-i18n="failedDownloads">Failed</div>
+                        <div class="stat-value error" id="fusion-stat-failed">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">
+                    <i data-lucide="package"></i>
+                    <span data-i18n="fusedMedias">Fused Media</span>
+                </h2>
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="flex: 1;">
+                        <p style="margin: 0 0 0.5rem 0; color: var(--text-secondary); font-size: 0.9rem;" data-i18n="fusedFilesStatus">Fused files status:</p>
+                        <div id="fusion-fused-list" class="zip-list" style="max-height: 500px; overflow-y: auto;">
+                            <div class="empty-state" data-i18n="noFusedFiles">No fused files</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <button id="fusion-move-fused-btn" class="btn btn-primary" style="flex: 1;">
+                        <i data-lucide="move"></i>
+                        <span data-i18n="moveAllFused">Move All Files</span>
+                    </button>
+                    <button id="fusion-refresh-fused-btn" class="btn btn-secondary">
+                        <i data-lucide="refresh-cw"></i>
+                        <span data-i18n="refresh">Refresh</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Include All Modals -->
+    <div id="modals-container"></div>
+    
+    <!-- Script to load modals.html -->
+    <script>
+        // Load modals.html content when page loads
+        fetch('modals.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('modals-container').innerHTML = html;
+                // Re-initialize Lucide icons after loading modals
+                if (window.lucide) lucide.createIcons();
+                // Dispatch event to notify that modals are loaded
+                document.dispatchEvent(new CustomEvent('modalsLoaded'));
+            })
+            .catch(error => console.error('Failed to load modals:', error));
+    </script>
+
+    <script type="module" src="../scripts/app.js"></script>
+</body>
+</html>
+

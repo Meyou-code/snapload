@@ -1,0 +1,178 @@
+<!--  All Modals and Popups - Shared across all pages -->
+
+<!-- Info Modal (Fusion) -->
+<div id="info-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>
+                <i data-lucide="git-merge"></i>
+                <span data-i18n="fusionInfoTitle">How does ZIP fusion work?</span>
+            </h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--text-primary);" data-i18n="fusionMediaDesc">Snapchat sometimes sends media as ZIPs containing:</h3>
+            
+            <div class="fusion-items-grid">
+                <div class="fusion-item-card">
+                    <div class="fusion-item-icon">
+                        <i data-lucide="image"></i>
+                    </div>
+                    <div class="fusion-item-title" data-i18n="mainMedia">Main image/video</div>
+                    <div class="fusion-item-desc" data-i18n="mainMediaDesc">(main.jpg or main.mp4)</div>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: center; color: var(--accent);">
+                    <i data-lucide="plus" style="width: 24px; height: 24px;"></i>
+                </div>
+                
+                <div class="fusion-item-card">
+                    <div class="fusion-item-icon">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <div class="fusion-item-title" data-i18n="overlayMedia">Transparent PNG overlay</div>
+                    <div class="fusion-item-desc" data-i18n="overlayMediaDesc">with text, stickers, filters</div>
+                </div>
+            </div>
+            
+            <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--success); border-radius: 6px;">
+                <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                    <i data-lucide="arrow-right" style="width: 20px; height: 20px; color: var(--success); flex-shrink: 0; margin-top: 2px;"></i>
+                    <div>
+                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.25rem;" data-i18n="mergesAutomatically">This program automatically merges these elements to get complete media.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(99, 102, 241, 0.08); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                <h4 style="margin: 0 0 0.75rem 0; color: var(--text-primary); display: flex; gap: 0.5rem; align-items: center;">
+                    <i data-lucide="check-circle-2" style="width: 18px; height: 18px; color: var(--success);"></i>
+                    <span data-i18n="whatProgramDoes">What this program does automatically</span>
+                </h4>
+                <ul style="margin: 0; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li data-i18n="detectsPairs">✓ Automatically detects main/overlay pairs</li>
+                    <li data-i18n="mergesOverlay">✓ Merges overlay onto main media</li>
+                    <li data-i18n="preservesMetadata">✓ Preserves metadata (date, location)</li>
+                    <li data-i18n="movesMedia">✓ Moves merged media to main folder</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Storage Info Modal -->
+<div id="storage-info-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>
+                <i data-lucide="hard-drive"></i>
+                <span data-i18n="defaultStorageFolder">Default Storage Folder</span>
+            </h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p id="storage-folder-info" style="word-break: break-all; font-weight: 500; color: var(--accent); margin-bottom: 1rem;"></p>
+            <p data-i18n="storageFolderDescription">This folder is automatically created when the application starts to store all media downloaded from Snapchat.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Dead Links Modal -->
+<div id="dead-links-modal" class="modal">
+    <div class="modal-content large-modal-content">
+        <div class="modal-header">
+            <h2>
+                <i data-lucide="alert-circle" style="color: #ef4444; animation: pulse 1.5s infinite;"></i>
+                <span data-i18n="expiredLinks">Expired Snapchat Links</span>
+            </h2>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="dead-links-container">
+                <!-- Left Column: Problem Explanation -->
+                <div class="dead-links-left">
+                    <div class="problem-box">
+                        <h3>
+                            <i data-lucide="zap"></i>
+                            <span data-i18n="whatHappened">What happened?</span>
+                        </h3>
+                        <p data-i18n="downloadStopped">Download was automatically stopped because 10 consecutive files could not be downloaded.</p>
+                        <p data-i18n="linksAreInvalid">The links provided by Snapchat are probably dead or expired.</p>
+                        
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="whyDoLinksExpire">Why do links expire?</strong>
+                                <p data-i18n="linksExpireSoon">Snapchat links usually expire after 4 days for security reasons. If you download your data but only import it after this period, the links will be invalid.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Steps -->
+                <div class="dead-links-right">
+                    <div style="border: 2px solid #ef4444; border-radius: 12px; padding: 1.5rem; background-color: rgba(239, 68, 68, 0.05);">
+                        <h3 style="margin-top: 0; margin-bottom: 1.25rem; color: #ef4444; display: flex; align-items: center; gap: 0.75rem; font-size: 1.1rem;">
+                            <i data-lucide="arrow-right"></i>
+                            <span data-i18n="snapchatDataRequest">Snapchat Data Request</span>
+                        </h3>
+                        
+                        <ol style="margin-left: 1.5rem; color: var(--text-primary); line-height: 2; list-style-type: decimal;">
+                            <li style="margin-bottom: 1rem;">
+                                <span data-i18n="followThisLink">Follow this</span> <a href="https://accounts.snapchat.com/v2/download-my-data" target="_blank" style="color: #2563eb; text-decoration: underline; font-weight: 600;"><span data-i18n="linkToSnapchat">link to Snapchat</span></a> <span data-i18n="inYourBrowser">in your browser</span>
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <span data-i18n="selectExportMemories">Select:</span> <code style="background: var(--bg-secondary); padding: 0.35rem 0.65rem; border-radius: 6px; font-weight: 500;">Export My Memories</code>
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <span data-i18n="selectExportJSON">Select:</span> <code style="background: var(--bg-secondary); padding: 0.35rem 0.65rem; border-radius: 6px; font-weight: 500;">JSON Files</code>
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <i data-lucide="clock" style="width: 1rem; height: 1rem; display: inline; vertical-align: text-bottom;"></i>
+                                <span data-i18n="waitForEmail">Wait for Snapchat email (a few hours)</span>
+                            </li>
+                            <li style="margin-bottom: 1rem;">
+                                <span data-i18n="downloadZipFile">Download the</span> <code style="background: var(--bg-secondary); padding: 0.35rem 0.65rem; border-radius: 6px; font-weight: 500;">mydata~XXXX.zip</code>
+                            </li>
+                            <li style="margin-bottom: 0;">
+                                <span data-i18n="useBtnBelow">Use the button below to import</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer" style="flex-wrap: wrap; gap: 1rem;">
+            <button class="btn btn-secondary" id="dead-links-close" data-i18n="iUnderstood">I understood</button>
+            <button class="btn btn-primary" id="dead-links-change-file">
+                <i data-lucide="upload"></i>
+                <span data-i18n="changeMemoriesFile">Change My Memories File</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Close Warning Modal -->
+<div id="close-warning-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>
+                <i data-lucide="alert-circle"></i>
+                <span data-i18n="closingImpossible">Closing Impossible</span>
+            </h2>
+            <button class="modal-close" id="close-warning-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p><strong data-i18n="downloadInProgress">A download is in progress or stopping.</strong></p>
+            <p data-i18n="avoidDataLoss">To avoid data loss or incomplete downloads, please:</p>
+            <ul>
+                <li data-i18n="waitDownload">Wait for the download to finish</li>
+                <li data-i18n="orClickStop">Or click "Stop" and wait for complete stop</li>
+            </ul>
+            <p style="margin-top: 1rem; color: var(--warning);" data-i18n="warningClose">⚠ Do not close the application during download!</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="close-warning-ok" data-i18n="okay">Okay</button>
+        </div>
+    </div>
+</div>

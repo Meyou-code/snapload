@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapLoad - Memories File Selection</title>
+    <link rel="stylesheet" href="../styles/devices.css">
+    <link rel="stylesheet" href="../styles/memories-selector.css">
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <img src="../../assets/logo.png" alt="SnapLoad Logo" class="logo">
+                <div class="header-text">
+                    <h1>SnapLoad</h1>
+                    <p data-i18n="guideTitle">Guide to Getting Your Memories</p>
+                </div>
+                <div class="language-selector">
+                    <select id="language-select" class="language-dropdown">
+                        <option value="EN">English</option>
+                        <option value="FR">French</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div class="steps-progress" id="steps-progress">
+            <div class="step-indicator active" data-step="0">
+                <div class="step-number">1</div>
+                <span data-i18n="guideRequest">Request</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="1">
+                <div class="step-number">2</div>
+                <span data-i18n="guideSelection">Selection</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="2">
+                <div class="step-number">3</div>
+                <span data-i18n="guidePeriod">Period</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="3">
+                <div class="step-number">4</div>
+                <span data-i18n="guideWait">Wait</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="4">
+                <div class="step-number">5</div>
+                <span data-i18n="guideDownload">Download</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" data-step="5">
+                <div class="step-number">6</div>
+                <span data-i18n="guideImport">Import</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+
+            <div class="card step-content active" id="step-0">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep1Title">Step 1: Request Your Memories</h2>
+                    <p class="step-subtitle" data-i18n="guideStep1Subtitle">Follow this guide to make your request via the Snapchat app</p>
+                </div>
+
+                <div class="phone-step-layout">
+                    <div class="step-instructions">
+                        <div class="instructions-box">
+                            <h4 data-i18n="guideStepsToFollow">Steps to follow:</h4>
+                            <ol>
+                                <li data-i18n="guideStep1_1">Open the Snapchat app and click on the profile icon at the top left</li>
+                                <li data-i18n="guideStep1_2">Click on the gear icon (settings) at the top right</li>
+                                <li data-i18n="guideStep1_3">Scroll down and click on "My Privacy & Data"</li>
+                                <li data-i18n="guideStep1_4">Click on "My Data"</li>
+                                <li data-i18n="guideStep1_5">You will be redirected to the browser to continue - then proceed to the next step of the guide</li>
+                            </ol>
+                        </div>
+
+                        <div class="warning-callout">
+                            <i data-lucide="zap"></i>
+                            <div>
+                                <strong data-i18n="guideShortcut">Shortcut: Go directly to the website</strong>
+                                <p>If you prefer, you can go directly to <a href="https://accounts.snapchat.com/v2/download-my-data" target="_blank" class="callout-link">https://accounts.snapchat.com/v2/download-my-data</a>. Log in to your account and then proceed to the next step.</p>
+                            </div>
+                        </div>
+
+                        <div class="info-callout">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="guideAutoRedirection">Automatic Redirection</strong>
+                                <p data-i18n="guideAutoRedirectionDesc">After clicking on "My Data", you will be automatically redirected to the Snapchat website in your browser.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-wrapper">
+                        <div class="device device-iphone-14-pro">
+                            <div class="device-frame">
+                                <div class="device-screen">
+                                    <div class="phone-carousel">
+                                        <div class="carousel-item active" data-index="0">
+                                            <div class="image-container"><img src="../../assets/phone1.png" alt="Step 1"></div>
+                                        </div>
+                                        <div class="carousel-item" data-index="1">
+                                            <div class="image-container"><img src="../../assets/phone2.png" alt="Step 2"></div>
+                                        </div>
+                                        <div class="carousel-item" data-index="2">
+                                            <div class="image-container"><img src="../../assets/phone3.png" alt="Step 3"></div>
+                                        </div>
+                                        <div class="carousel-item" data-index="3">
+                                            <div class="image-container"><img src="../../assets/phone4.png" alt="Step 4"></div>
+                                        </div>
+
+                                        <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Previous"><i data-lucide="chevron-left"></i></button>
+                                        <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Next"><i data-lucide="chevron-right"></i></button>
+
+                                        <div class="carousel-dots">
+                                            <span class="dot active" data-index="0"></span>
+                                            <span class="dot" data-index="1"></span>
+                                            <span class="dot" data-index="2"></span>
+                                            <span class="dot" data-index="3"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div><div class="device-home"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card step-content" id="step-1">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep2Title">Step 2: Select the Data to Export</h2>
+                    <p class="step-subtitle" data-i18n="guideStep2Subtitle">On the Snapchat website, choose what data you want to export</p>
+                </div>
+
+                <div class="step-layout">
+                    <div class="step-images">
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step1.png" alt="Selection screen" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step1.1.png" alt="Confirmation screen" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-instructions">
+                        <div class="instructions-box">
+                            <h4 data-i18n="guideWhatToCheck">What to check:</h4>
+                            <ol>
+                                <li data-i18n="guideStep2_1">Check "Export my memories" - this contains all your photos and videos</li>
+                                <li data-i18n="guideStep2_2">Check "Export JSON files" - required for SnapLoad to read metadata</li>
+                                <li data-i18n="guideStep2_3">Uncheck all other options - you don't need chat history, etc.</li>
+                                <li data-i18n="guideStep2_4">Click the "Follow" button on the Snapchat page</li>
+                            </ol>
+                        </div>
+
+                        <div class="info-callout">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="guideWhyJSON">Why JSON format?</strong>
+                                <p data-i18n="guideWhyJSONDesc">It contains download links and metadata. SnapLoad cannot work without it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card step-content" id="step-2">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep3Title">Step 3: Choose the Period</h2>
+                    <p class="step-subtitle" data-i18n="guideStep3Subtitle">Select the period of your Memories to download</p>
+                </div>
+
+                <div class="step-layout">
+                    <div class="step-images">
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step2.png" alt="Period Selection" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-instructions">
+                        <div class="instructions-box">
+                            <h4 data-i18n="guideStepsToFollow">Steps to follow:</h4>
+                            <ol>
+                                <li data-i18n="guideStep3_1">Select the period you want to download from the dropdown menu</li>
+                                <li data-i18n="guideStep3_2">To retrieve everything, choose the "All Time" option</li>
+                                <li data-i18n="guideStep3_3">Click on "Next"</li>
+                                <li data-i18n="guideStep3_4">Continue to the next step</li>
+                            </ol>
+                        </div>
+
+                        <div class="info-callout">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="guideAllYourMemories">All Your Memories</strong>
+                                <p data-i18n="guideAllYourMemoriesDesc">Select "All Time" to get all your photos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card step-content" id="step-3">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep4Title">Step 4: Wait</h2>
+                    <p class="step-subtitle" data-i18n="guideStep4Subtitle">Wait time depends on data volume</p>
+                </div>
+
+                <div class="step-layout">
+                    <div class="step-images">
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step3.png" alt="Data Preparation" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+
+                        <div class="timing-info">
+                            <div class="timing-card">
+                                <div class="timing-icon"><i data-lucide="zap"></i></div>
+                                <h4 data-i18n="guideQuickCase">Quick Case</h4>
+                                <p><strong data-i18n="guideQuickCaseTime">Minutes to 1 hour</strong></p>
+                                <span data-i18n="guideQuickCaseDesc">Little data</span>
+                            </div>
+                            <div class="timing-card">
+                                <div class="timing-icon"><i data-lucide="clock"></i></div>
+                                <h4 data-i18n="guideNormalCase">Normal Case</h4>
+                                <p><strong data-i18n="guideNormalCaseTime">A few hours</strong></p>
+                                <span data-i18n="guideNormalCaseDesc">Most users</span>
+                            </div>
+                            <div class="timing-card">
+                                <div class="timing-icon"><i data-lucide="hourglass"></i></div>
+                                <h4 data-i18n="guideLongCase">Long Case</h4>
+                                <p><strong data-i18n="guideLongCaseTime">Days</strong></p>
+                                <span data-i18n="guideLongCaseDesc">Many Memories</span>
+                            </div>
+                        </div>
+
+                        <div class="example-box">
+                            <h4><i data-lucide="bar-chart-3"></i> <span data-i18n="guideAsReference">Reference:</span></h4>
+                            <p data-i18n="guideAsReferenceDesc">1500 Memories takes approx 20 minutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-instructions">
+                        <div class="instructions-box">
+                            <h4 data-i18n="guideWhatHappensNow">What happens now?</h4>
+                            <ol>
+                                <li data-i18n="guideStep4_1">Snapchat is preparing your data - just wait</li>
+                                <li data-i18n="guideStep4_2">You'll receive an email from Snapchat when ready</li>
+                                <li data-i18n="guideStep4_3">Proceed to step 5 upon receipt</li>
+                            </ol>
+                        </div>
+
+                        <div class="info-callout">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="guideCanCloseApp">You can close the app</strong>
+                                <p data-i18n="guideCanCloseAppDesc">Close SnapLoad and return once you have the email.</p>
+                            </div>
+                        </div>
+
+                        <div class="warning-callout">
+                            <i data-lucide="alert-circle"></i>
+                            <div>
+                                <strong data-i18n="guideRememberSpam">Check spam!</strong>
+                                <p data-i18n="guideRememberSpamDesc">Snapchat's email often arrives in spam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card step-content" id="step-4">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep5Title">Step 5: Download Your Data</h2>
+                    <p class="step-subtitle" data-i18n="guideStep5Subtitle">To do on your computer - Retrieve the file</p>
+                </div>
+
+                <div class="step-layout">
+                    <div class="step-images">
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step4.png" alt="Email Received" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+                        <div class="step-image-item">
+                            <div class="image-container">
+                                <img src="../../assets/step4.4.png" alt="Download Page" class="zoomable-image">
+                                <div class="zoom-icon"><i data-lucide="zoom-in"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-instructions">
+                        <div class="warning-callout">
+                            <i data-lucide="monitor"></i>
+                            <div>
+                                <strong data-i18n="guideMakeYouOnPC">Use your computer</strong>
+                                <p data-i18n="guideMakeYouOnPCDesc">You must use your PC to access the link and download the file.</p>
+                            </div>
+                        </div>
+
+                        <div class="instructions-box">
+                            <h4 data-i18n="guideDownloadSteps">Steps to follow:</h4>
+                            <ol>
+                                <li data-i18n="guideStep5_1">You've received the email from Snapchat</li>
+                                <li data-i18n="guideStep5_2">Open the link in the email on your PC</li>
+                                <li data-i18n="guideStep5_3">Log in to Snapchat</li>
+                                <li data-i18n="guideStep5_4">Click "View Exports"</li>
+                                <li data-i18n="guideStep5_5">Click "Download"</li>
+                                <li data-i18n="guideStep5_6">A ZIP file will download</li>
+                                <li data-i18n="guideStep5_7">Proceed to the next step to import</li>
+                            </ol>
+                        </div>
+
+                        <div class="info-callout">
+                            <i data-lucide="info"></i>
+                            <div>
+                                <strong data-i18n="guideZIPFileDownloaded">ZIP File Downloaded</strong>
+                                <p data-i18n="guideZIPFileDownloadedDesc">The ZIP contains your data. You'll import it next.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card step-content" id="step-5">
+                <div class="step-header">
+                    <h2 data-i18n="guideStep6Title">Step 6: Import Your Data</h2>
+                    <p class="step-subtitle" data-i18n="guideStep6Subtitle">Choose import method</p>
+                </div>
+
+                <div class="step-5-layout">
+                    <div class="step-5-left">
+                        <div class="import-containers">
+                            <div class="import-container">
+                                <div class="import-header">
+                                    <i data-lucide="zap" class="import-icon"></i>
+                                    <h3 data-i18n="guideAutomaticImport">Automatic Import</h3>
+                                    <button class="info-btn" id="info-auto-import">
+                                        <i data-lucide="info"></i>
+                                        <span data-i18n="guideInformation">Information</span>
+                                    </button>
+                                </div>
+                                <p class="import-description" data-i18n="guideAutomaticImportDesc">SnapLoad automatically searches Downloads for the ZIP file and imports it.</p>
+                                <button id="auto-import-memories-btn" class="primary-button auto-import-btn">
+                                    <i data-lucide="zap"></i>
+                                    <span data-i18n="guideImportAutomatically">Import Automatically</span>
+                                </button>
+                                <div id="auto-import-status" style="display: none;">
+                                    <div id="auto-import-loading" class="loading-status" style="display: none;">
+                                        <div class="spinner"></div>
+                                        <span data-i18n="guideSearchingZIP">Searching for ZIP file...</span>
+                                    </div>
+                                    <div id="auto-import-error" class="error-status" style="display: none;">
+                                        <i data-lucide="alert-circle"></i>
+                                        <div>
+                                            <p id="auto-import-error-text" data-i18n="guideNoFileFound">No file found. Try manual import.</p>
+                                        </div>
+                                    </div>
+                                    <div id="auto-import-success" class="success-status" style="display: none;">
+                                        <i data-lucide="check-circle"></i>
+                                        <div>
+                                            <p data-i18n="guideFileSuccessfullyExtracted">Success! File imported.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="import-container">
+                                <div class="import-header">
+                                    <i data-lucide="folder-open" class="import-icon"></i>
+                                    <h3 data-i18n="guideManualImport">Manual Import</h3>
+                                    <button class="info-btn" id="info-manual-import">
+                                        <i data-lucide="info"></i>
+                                        <span data-i18n="guideInformation">Information</span>
+                                    </button>
+                                </div>
+                                <p class="import-description" data-i18n="guideManualImportDesc">Manually browse and select the file.</p>
+                                <button id="fallback-upload-memories-btn" class="primary-button manual-import-btn">
+                                    <i data-lucide="folder-open"></i>
+                                    <span data-i18n="guideImportManually">Import Manually</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-5-right">
+                        <div class="step-explanation">
+                            <h3 data-i18n="guideHowDoesItWork">How does it work?</h3>
+                            <div class="explanation-steps">
+                                <div class="explanation-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-text">
+                                        <strong data-i18n="guideExpl_1">ZIP Downloaded</strong>
+                                        <p data-i18n="guideExpl_1Desc">You have the ZIP from Snapchat.</p>
+                                    </div>
+                                </div>
+                                <div class="explanation-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-text">
+                                        <strong data-i18n="guideExpl_2">Choose Mode</strong>
+                                        <p data-i18n="guideExpl_2Desc">Auto or Manual import.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-navigation">
+                <button id="prev-btn" class="nav-button" style="display: none;">
+                    <i data-lucide="chevron-left"></i>
+                    <span data-i18n="guidePrevious">Previous</span>
+                </button>
+                <div class="step-counter">
+                    <span id="current-step">1</span> / <span id="total-steps">6</span>
+                </div>
+                <button id="next-btn" class="nav-button">
+                    <span data-i18n="guideNext">Next</span>
+                    <i data-lucide="chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="info-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i data-lucide="info"></i>
+                    <span id="info-modal-title" data-i18n="guideInformation">Information</span>
+                </h2>
+                <button id="close-info-modal" class="close-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="info-auto-import-content" style="display: none;">
+                    <h3 data-i18n="guideAutoImportTitle">Automatic Import</h3>
+                    <ol>
+                        <li data-i18n="guideAutoImportStep1">You've downloaded the ZIP (mydata~XXXX.zip)</li>
+                        <li data-i18n="guideAutoImportStep2">SnapLoad searches Downloads folder</li>
+                        <li data-i18n="guideAutoImportStep3">Uses most recent file if multiple found</li>
+                        <li data-i18n="guideAutoImportStep4">Extracts memories_history.json automatically</li>
+                        <li data-i18n="guideAutoImportStep5">Imports without manual action</li>
+                    </ol>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);"><strong data-i18n="guideAutoImportAdvantage">Advantage: Fast and automated.</strong></p>
+                </div>
+                <div id="info-manual-import-content" style="display: none;">
+                    <h3 data-i18n="guideManualImportTitle">Manual Import</h3>
+                    <ol>
+                        <li data-i18n="guideManualImportStep1">Click button to select file</li>
+                        <li data-i18n="guideManualImportStep2">Choose JSON or ZIP file</li>
+                        <li data-i18n="guideManualImportStep3">Confirm selection</li>
+                        <li data-i18n="guideManualImportStep4">Import starts</li>
+                    </ol>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);"><strong data-i18n="guideManualImportAdvantage">Advantage: Good for specific file selection.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="file-upload-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i data-lucide="file-json"></i><span data-i18n="guideImportYourMemories">Import Your Memories</span></h2>
+                <button id="close-modal" class="close-btn"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="file-input-wrapper">
+                    <input type="file" id="file-input" accept=".json,.zip" style="display: none;">
+                    <button id="select-file-btn" class="btn-primary">
+                        <i data-lucide="folder-open"></i>
+                        <span data-i18n="guideBrowseFiles">Browse Files</span>
+                    </button>
+                </div>
+                <div id="file-info" class="file-info" style="display: none;">
+                    <i data-lucide="check-circle" class="success-icon"></i>
+                    <div class="file-details">
+                        <div class="file-name" id="file-name"></div>
+                        <div class="file-path" id="file-path"></div>
+                    </div>
+                </div>
+                <div id="error-message" class="error-message" style="display: none;">
+                    <i data-lucide="alert-circle"></i>
+                    <span id="error-text"></span>
+                </div>
+                <div id="success-message" class="success-message" style="display: none;">
+                    <i data-lucide="check-circle"></i>
+                    <span data-i18n="guideFileSuccessfullyFound">File found and imported successfully!</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="validate-btn" class="btn-primary" disabled>
+                    <i data-lucide="check"></i>
+                    <span data-i18n="guideValidateAndContinue">Validate and Continue</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p data-i18n="guideFileValidationInProgress">File validation in progress...</p>
+        </div>
+    </div>
+
+    <div id="image-zoom-modal" class="image-zoom-modal" style="display: none;">
+        <button id="close-zoom" class="close-zoom-btn"><i data-lucide="x"></i></button>
+        <div class="zoom-content"><img id="zoomed-image" src="" alt="Enlarged image"></div>
+    </div>
+
+    <script src="../scripts/memories-selector.js"></script>
+</body>
+</html>
