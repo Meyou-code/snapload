@@ -1,7 +1,7 @@
 [Setup]
 AppId={{9F5C8A2E-6F7B-4D1A-9E45-123456789ABC}
 AppName=SnapLoad
-AppVersion=1.0.0
+AppVersion=0.1.0-beta
 AppPublisher=SnapLoad
 AppPublisherURL=https://github.com/meyou-code/snapload
 AppSupportURL=https://github.com/meyou-code/snapload

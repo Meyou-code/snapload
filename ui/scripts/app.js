@@ -520,7 +520,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   document.getElementById("feedback-button")?.addEventListener("click", e => {
     e.preventDefault();
-    window.open("https://github.com", "_blank");
+    window.open("https://github.com/Meyou-code/snapload/issues", "_blank");
   });
 
   document.getElementById("settings-button")?.addEventListener("click", () => {
