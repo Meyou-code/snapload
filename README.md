@@ -1,6 +1,10 @@
 <div align="center">
   
   <img src="./assets/logo.png" alt="SnapLoad Logo" width="200"/>
+
+> ⚠️ **PROJECT UNDER MAINTENANCE** ⚠️
+>
+> SnapLoad is currently not working due to a change on Snapchat's side in how export data is sent. A fix is in progress. Thanks for your patience.
   
   <h1>✨ SnapLoad — Snapchat Memories Downloader ✨</h1>
 
